@@ -24,10 +24,16 @@ import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class RegisterActivity extends AppCompatActivity implements View.OnClickListener{
+public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
 
-    String UserName, Phone, Email, Password;
-    EditText username, phone, email, password;
+    String UserName;
+    String Phone;
+    String Email;
+    String Password;
+    EditText username;
+    EditText phone;
+    EditText email;
+    EditText password;
     TextView mBack;
     FirebaseAuth mAuth;
     DatabaseReference mdatabase;
@@ -38,12 +44,12 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        username = (EditText)findViewById(R.id.editUserName);
-        phone = (EditText)findViewById(R.id.editPhone);
-        email = (EditText)findViewById(R.id.editEmail);
-        password = (EditText)findViewById(R.id.editPassword);
-        mRegisterbtn = (Button)findViewById(R.id.buttonRegister);
-        mBack = (TextView)findViewById(R.id.buttonLogin);
+        username = findViewById(R.id.editUserName);
+        phone = findViewById(R.id.editPhone);
+        email = findViewById(R.id.editEmail);
+        password = findViewById(R.id.editPassword);
+        mRegisterbtn = findViewById(R.id.buttonRegister);
+        mBack = findViewById(R.id.buttonLogin);
 
         mAuth = FirebaseAuth.getInstance();
         mRegisterbtn.setOnClickListener(this);
@@ -63,10 +69,10 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     @Override
     public void onClick(View v) {
-        if (v==mRegisterbtn){
+        if (v == mRegisterbtn) {
             UserRegister();
-        }else if (v== mBack){
-        startActivity(new Intent(RegisterActivity.this,LoginActivity.class));
+        } else if (v == mBack) {
+            startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
         }
     }
 
@@ -77,31 +83,37 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         Email = email.getText().toString().trim();
         Password = password.getText().toString().trim();
 
-        if (TextUtils.isEmpty(UserName)){
+        if (TextUtils.isEmpty(UserName)) {
             username.setError("Enter UserName");
             username.setFocusable(true);
             return;
-        }if (TextUtils.isEmpty(Phone)){
+        }
+        if (TextUtils.isEmpty(Phone)) {
             phone.setError("Enter Phone");
             phone.setFocusable(true);
             return;
-        }if (!Patterns.PHONE.matcher(Phone).matches()){
+        }
+        if (!Patterns.PHONE.matcher(Phone).matches()) {
             phone.setError("Invalid Phone");
             phone.setFocusable(true);
             return;
-        }if (TextUtils.isEmpty(Email)) {
+        }
+        if (TextUtils.isEmpty(Email)) {
             email.setError("Enter Email");
             email.setFocusable(true);
             return;
-        }if (!Patterns.EMAIL_ADDRESS.matcher(Email).matches()){
-                email.setError("Invalid Email");
-                email.setFocusable(true);
-                return;
-        }if (TextUtils.isEmpty(Password)){
+        }
+        if (!Patterns.EMAIL_ADDRESS.matcher(Email).matches()) {
+            email.setError("Invalid Email");
+            email.setFocusable(true);
+            return;
+        }
+        if (TextUtils.isEmpty(Password)) {
             password.setError("Enter Password");
             password.setFocusable(true);
             return;
-        }if (Password.length()<8){
+        }
+        if (Password.length() < 8) {
             password.setError("Password length at least 8 characters");
             password.setFocusable(true);
             return;
@@ -112,7 +124,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         mDialog.setCanceledOnTouchOutside(false);
         mDialog.show();
 
-        mAuth.createUserWithEmailAndPassword(Email,Password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        mAuth.createUserWithEmailAndPassword(Email, Password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
 
@@ -135,12 +147,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                                 }
                             }
                         });
-
-
-
-
-
-
 
 
             }

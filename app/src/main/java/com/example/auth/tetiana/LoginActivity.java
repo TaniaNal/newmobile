@@ -20,16 +20,17 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-
 public class LoginActivity extends AppCompatActivity {
-    EditText Email, Password;
+
+    EditText Email;
+    EditText Password;
     FirebaseAuth mAuth;
     FirebaseUser mUser;
-    String email, password;
+    String email;
+    String password;
     ProgressDialog dialog;
     Button LogIn;
     FirebaseAuth.AuthStateListener mAuthListner;
-
 
 
     @SuppressLint("WrongViewCast")
@@ -37,11 +38,11 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        Email = (EditText) findViewById(R.id.editEmail);
-        Password = (EditText) findViewById(R.id.editPassword);
-        LogIn = (Button) findViewById(R.id.buttonLogin);
+        Email = findViewById(R.id.editEmail);
+        Password = findViewById(R.id.editPassword);
+        LogIn = findViewById(R.id.buttonLogin);
 
-        TextView createNewUser = (TextView)findViewById(R.id.buttonRegister);
+        TextView createNewUser = findViewById(R.id.buttonRegister);
         dialog = new ProgressDialog(this);
         mAuth = FirebaseAuth.getInstance();
         mUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -97,7 +98,7 @@ public class LoginActivity extends AppCompatActivity {
             Email.setError("Enter Email");
             Email.setFocusable(true);
             return;
-        }else if (TextUtils.isEmpty(password)){
+        } else if (TextUtils.isEmpty(password)) {
             Password.setError("Enter Password");
             Password.setFocusable(true);
             return;
@@ -125,5 +126,5 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
-    }
+}
 
