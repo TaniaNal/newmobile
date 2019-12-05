@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/content_view"
+    android:gravity="center_horizontal"
+    android:paddingTop="24dp"
+    android:paddingLeft="24dp"
+    android:paddingRight="24dp"
+    android:paddingBottom="24dp">
+
+    <ImageView
+        android:id="@+id/panel_details_image_view"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:contentDescription= "@string/panel_type"
+        android:layout_gravity="center"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/panel_details_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:paddingTop="36dp"
+        android:textColor="@color/colorPurple">
+    </com.google.android.material.textview.MaterialTextView>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/panel_details_year"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:textColor="@color/colorPurple">
+    </com.google.android.material.textview.MaterialTextView>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/panel_details_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:textColor="@color/colorPrimaryDark">
+    </com.google.android.material.textview.MaterialTextView>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/panel_details_usage_period"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:textColor="@color/colorPrimaryDark">
+    </com.google.android.material.textview.MaterialTextView>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/panel_details_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:textColor="@color/colorPrimaryDark">
+    </com.google.android.material.textview.MaterialTextView>
+</LinearLayout>
